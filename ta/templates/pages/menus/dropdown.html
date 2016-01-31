@@ -1,0 +1,64 @@
+{% load i18n pages_tags %}
+{% spaceless %}
+{% if page_branch_in_menu %}
+
+
+{% if branch_level == 0 and not on_home %}
+<?xml version="1.0" encoding="utf-8"?>
+<svg class="logo" version="1.1" id="Layer_6" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+     viewBox="0 0 1246.8 2" style="enable-background:new 0 0 1246.8 2;" xml:space="preserve">
+<polyline style="fill:none;stroke:#CCCCCC;stroke-linecap:square;stroke-miterlimit:10;" points="1244,0 -31,0 -31,1 1244,1
+    "/>
+</svg>
+
+<!-- <div class="horizontal-line"></div> -->
+
+<div class="navigation" role="navigation">
+    <div class="navigation__site-links">
+    {% for page in page_branch %}
+    {% if not has_home and page.is_primary and forloop.first %}    
+        <a href="{% url "home" %}" class="navigation__site-link {% if on_home %} navigation__site-link--is-current {% endif %}">{% trans "В начало" %}</a>
+    {% endif %}
+    {% if page.in_menu %}
+    
+        <a href="{{ page.get_absolute_url }}" class="navigation__site-link {% if page.is_current_or_ascendant %}navigation__site-link--is-current{% endif %}">
+            {{ page.title }}
+        </a>
+        {% if page.has_children_in_menu %}{% page_menu page %}{% endif %}
+    
+    {% endif %}
+    {% endfor %}
+    </div>
+    <div class="navigation__misc-links">
+    <!-- <a href="#" class="navigation__lang-link">english</a> -->
+    <a href="#" class="navigation__social-link"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+      <image id="Vector_Smart_Object" data-name="Vector Smart Object" width="16" height="16" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAn1BMVEUAAADa2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2toAAACvLfnQAAAAM3RSTlMAV+vt4tDc+AcB5vDg8vH9LhAh70wCR+f3Qjv53/bp+8VNRs1YXQha7l+Q/pdQv8FW2t6I9lCVAAAAAWJLR0QAiAUdSAAAAAlwSFlzAAALEgAACxIB0t1+/AAAAI1JREFUGNNdz8kWgjAUA9BQqFKkoKKCI87znP//NytU4JjVyz1vEziCjQgHbt082aKLurd9qIAN6AAIK9AR426vn1gQg6EapcUJZjLj2Hxjwqk5QYkkQJFZBlnAfFGCl1tYcvXta24sbBnt9v7hyJMFnMlLTF7xA9zuWj+eKOGlUEW9acYFYZXUjPuf/wEx6xtqXs36MQAAAABJRU5ErkJggg=="/>
+    </svg>
+    </a><a href="{{ settings.SOCIAL_LINK_FACEBOOK }}" class="navigation__social-link"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+      <image id="Vector_Smart_Object" data-name="Vector Smart Object" width="16" height="16" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAV1BMVEUAAADa2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2toAAAAT+w3pAAAAG3RSTlMAFrj+8uD8/WsEhSMxgPAQjltQBS3qHwEJ4pDrO8WsAAAAAWJLR0QAiAUdSAAAAAlwSFlzAAALEgAACxIB0t1+/AAAAGRJREFUGNN9z0sOgDAIBNARrH9F61/uf0+NsVU2siE8kkkGCbHGYUpAaobw/lPnMmWEMy9KwKlGqAALNZq27T4g6O/9wOBHTN7PEQSwGYus2ER2k3F8M/6ALXAs9wAh1L/hqn8C53QUtvbucM0AAAAASUVORK5CYII="/>
+    </svg>
+    </a><a href="#" class="navigation__social-link"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="10" viewBox="0 0 16 10">
+      <image id="Vector_Smart_Object" data-name="Vector Smart Object" width="16" height="10" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAKCAMAAACKYC6uAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAA2FBMVEUAAADa2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2tra2toAAABTohWyAAAARnRSTlMA9qsVWqBQ1MDL96Q/cDhH1y+Sr44qWxAZhrFI+vU99CnVT2DFvt7BDPui/RE5sCci7vkcF2LHxn/pp+GI8K4bAWvT23oD8SFgSgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxIAAAsSAdLdfvwAAACFSURBVAjXJc3VAoJQFETRQT0WXrtFsbu7UKz5/0+SC/O4HvaAekYoDEREJAqQsXgiSRNIKaXSGjzNMAvk8oViSUO5Uq2xjobFJq0W/AbtNjrsose+BwMxhxyNORGZchY05uSCxlIvgBW53mx32KuDf3u0ecKZl+uN9yDqPJ5wX2/n8/39AbyCGC0iGNIEAAAAAElFTkSuQmCC"/>
+    </svg>
+    </a>
+
+    </div>
+</div>
+
+{% else %}
+<ul class="dropdown-menu">
+    {% for page in page_branch %}
+    {% if page.in_menu %}
+    <li class="{% if page.has_children_in_menu %}dropdown-submenu{% endif %}
+               {% if page.is_current_or_ascendant %}active{% endif %}"
+        id="{{ page.html_id }}">
+        <a href="{{ page.get_absolute_url }}">{{ page.title }}</a>
+        {% if page.has_children_in_menu %}{% page_menu page %}{% endif %}
+    </li>
+    {% endif %}
+    {% endfor %}
+</ul>
+{% endif %}
+
+{% endif %}
+{% endspaceless %}

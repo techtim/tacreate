@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block meta_title %}{% title %}{% endblock %}
+{% block title %}{% title %}{% endblock %}
+
+{% block breadcrumb_menu %}
+<li class="active">{% title %}</li>
+{% endblock %}
+
+{% block main %}
+{% blocktrans %}
+
+<h1>{% block title %}{% endblock %}</h1>
+
+{% endblocktrans %}
+{% endblock %}

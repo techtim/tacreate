@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block meta_title %}{% trans "Home" %}{% endblock %}
+{% block title %}{% trans "Home" %}{% endblock %}
+
+
+{% block main %}
+{% blocktrans %}
+
+<link rel="stylesheet" type="text/css" media="all" href="static/imenu/css.css">
+<script type="text/javascript" src="static/imenu/core.js"></script><script type="text/javascript" src="static/imenu/deviceProxy.js"></script><script type="text/javascript" src="static/imenu/module.js"></script><script type="text/javascript" src="static/imenu/three.js"></script><script type="text/javascript" src="static/imenu/Detector.js"></script><script type="text/javascript" src="static/imenu/stats.js"></script></head>
+
+	<!-- Canvas version and logic -->
+	
+	<!-- Webgl -->
+
+	<body style="cursor: move;" onload="init()">
+	<div id="values"></div>
+		<div id="container"><canvas style="width: 1645px; height: 556px;" height="556" width="1645"></canvas></div>
+		<script src="static/imenu/app.js"></script>
+
+{% endblocktrans %}
+{% endblock %}
