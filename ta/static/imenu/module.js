@@ -76,6 +76,9 @@ function checkRelease(){
 	if (delta < 100) {
 		pushed = selected;
 	} 
+	if (selected != -1) {
+		pushed = selected;
+	}
 	selected = -1;
 	document.body.style.cursor = 'auto';
 }

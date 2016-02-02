@@ -5,6 +5,8 @@
  *    without disabling user zoom.
  */
 @import url(https://fonts.googleapis.com/css?family=PT+Sans&subset=latin,cyrillic);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,300italic,400italic&subset=latin,cyrillic);
+
 html {
   font-family: sans-serif;
   /* 1 */
@@ -127,8 +129,10 @@ dfn {
  */
 h1 {
   margin-bottom: 50px;
-  font-size: 48px;
-  font-family: "PT Sans",serif;
+  font-size: 44px;
+  letter-spacing: 0.05em;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
 }
 
 /**
@@ -411,6 +415,9 @@ th {
       -ms-flex-align: center;
           align-items: center;
   font-size: 15px;
+  /*font-weight: bold;
+  letter-spacing: 0.1em;*/
+
 }
 .navigation__site-links {
   width: 768px;
@@ -441,7 +448,7 @@ th {
   color: #cc0000;
   content: '\2219';
   font-family: Georgia;
-  font-size: 48px;
+  font-size: 50px;
 }
 .navigation__lang-link {
   margin-right: 34px;
@@ -824,7 +831,9 @@ body {
   width: 100%;
   background: #ffffff;
   color: #333;
-  font-family: 'PT Sans', serif;
+  font-family: 'PT Sans', sans-serif;
+  font-weight: 400;
+  /*letter-spacing: .01em;*/
   overflow-x: hidden;
 }
 

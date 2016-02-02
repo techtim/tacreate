@@ -79,7 +79,7 @@
 </h2>
 {% endeditable %}
 {% endblock %}
-{% block blog_post_list_post_metainfo %}
+<!-- {% block blog_post_list_post_metainfo %}
 {% editable blog_post.publish_date %}
 <h6 class="post-meta">
     {% trans "Posted by" %}:
@@ -97,7 +97,7 @@
     {% blocktrans with sometime=blog_post.publish_date|timesince %}{{ sometime }} ago{% endblocktrans %}
 </h6>
 {% endeditable %}
-{% endblock %}
+{% endblock %} -->
 
 {% if settings.BLOG_USE_FEATURED_IMAGE and blog_post.featured_image %}
 {% block blog_post_list_post_featured_image %}
