@@ -32,7 +32,7 @@ class ProjectCategoryAdmin(BaseTranslationModelAdmin):
     Admin class for blog categories. Hides itself from the admin menu
     unless explicitly specified.
     """
-    fieldsets = ((None, {"fields": ("title",)}),)
+    fieldsets = ((None, {"fields": ("title", "slug")}),)
 
     def in_menu(self):
         """

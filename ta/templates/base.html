@@ -4,9 +4,9 @@
 
 <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-status-bar-style" content="red"> -->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="red">
     <meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
     <meta name="description" content="{% block meta_description %}{% endblock %}">
     <title>{% block meta_title %}{% endblock %}{% if settings.SITE_TITLE %} | {{ settings.SITE_TITLE }}{% endif %}</title>
@@ -43,26 +43,30 @@
     <script src="{% static "mezzanine/js/"|add:settings.JQUERY_FILENAME %}"></script>
     <script src="{% static "js/bootstrap.js" %}"></script>
     <script src="{% static "js/bootstrap-extras.js" %}"></script>
+
     {% block extra_js %}{% endblock %}
     {% endcompress %}
-
     <!--[if lt IE 9]>
     <script src="{% static "js/html5shiv.js" %}"></script>
     <script src="{% static "js/respond.min.js" %}"></script>
     <![endif]-->
-
     {% block extra_head %}{% endblock %}
-
 </head>
 
 <body id="{% block body_id %}body{% endblock %}">
 
 <a href="/" class="logo"><?xml version="1.0" encoding="utf-8"?>
-<svg version="1.1" id="Layer_6" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+<!-- <svg version="1.1" id="Layer_6" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
      viewBox="0 0 31.8 38.9" style="enable-background:new 0 0 31.8 38.9;" xml:space="preserve">
 <polyline style="fill:none;stroke:#CCCCCC;stroke-linecap:square;stroke-miterlimit:10;" points="10.8,0.6 27.8,38.9
     "/>
 <polyline style="fill:none;stroke:#CCCCCC;stroke-miterlimit:10;" points="0.4,38.9 17.6,0.4 8,0.4 25.3,38.9 "/>
+</svg> -->
+<svg version="1.1" id="Layer_6" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+     viewBox="0 0 1246.8 38.9" style="enable-background:new 0 0 1246.8 38.9;" xml:space="preserve">
+<polyline style="fill:none;stroke:#CCCCCC;stroke-linecap:square;stroke-miterlimit:10;" points="1228.8,0.6 1245.8,38.4 -31,38.4
+    "/>
+<polyline style="fill:none;stroke:#CCCCCC;stroke-miterlimit:10;" points="1218.4,38.3 1235.6,0.4 1226,0.4 1243.3,38.3 "/>
 </svg>
 </a>
 
@@ -88,7 +92,7 @@
 </ul>   
 <!-- </div> -->
 
-<div class="content-block">
+<div class="container content-block">
 <h1>
 {% block title %}{% endblock %}
 </h1>
@@ -97,10 +101,10 @@
 
 <div class="footer">&copy; 2016 TechArtCreate</div>
 
-<!-- <script src="/js/app.js"></script> -->
+
 
 <!-- {% page_menu "pages/menus/footer.html" %} -->
 {% include "includes/footer_scripts.html" %}
-    
+<script src="/js/app.js"></script>
 </body>
 </html>

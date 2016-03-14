@@ -184,8 +184,8 @@ function render() {
 
 
 
-		var centerX = window.devicePixelRatio * window.innerWidth / 2.0;
-		var centerY = window.devicePixelRatio * (window.innerHeight / 2.0 + 300);
+		var centerX = window.devicePixelRatio * window.innerWidth / 3.0;
+		var centerY = window.devicePixelRatio * (window.innerHeight / 3.0 + 100);
 		var sizeX = window.devicePixelRatio * window.innerWidth;
 		var sizeY = window.devicePixelRatio * window.innerHeight;
 

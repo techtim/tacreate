@@ -3,9 +3,10 @@
 {% load mezzanine_tags %}
 
 {% block main %}{{ block.super }}
-
+<div class="content-block__left-side content-block__left-side--collapsed">
 {% editable page.richtextpage.content %}
 {{ page.richtextpage.content|richtext_filters|safe }}
 {% endeditable %}
-
+</div>
+{% include "includes/team_list.html" %}
 {% endblock %}

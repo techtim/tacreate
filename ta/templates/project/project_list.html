@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load i18n mezzanine_tags blog_tags keyword_tags disqus_tags %}
+{% load i18n mezzanine_tags project_tags keyword_tags disqus_tags %}
 
 {% block meta_title %}{% if page %}{{ page.meta_title }}{% else %}{% trans "Project" %}{% endif %}{% endblock %}
 
@@ -17,7 +17,7 @@
 
 {% block title %}
 {% if page %}
-{% editable page.title %}{{ page.title }}{% endeditable %}
+{{ page.title }}
 {% else %}
 {% trans "Project" %}
 {% endif %}
@@ -29,7 +29,7 @@
 <li>{% spaceless %}
 {% if tag %}
     {% trans "Tag:" %} {{ tag }}
-{% elif category %}
+{% elif 0 and category %}
     {% trans "Category:" %} {{ category }}
 {% elif year or month %}
     {% if month %}{{ month }}, {% endif %}{{ year }}
@@ -46,11 +46,6 @@
     <p>
     {% if tag %}
         {% trans "Viewing projects tagged" %} {{ tag }}
-    {% elif category %}
-        {% trans "Viewing projects for the category" %} {{ category }}
-    {% elif year or month %}
-        {% trans "Viewing projects from" %} {% if month %}{{ month }}, {% endif %}
-        {{ year }}
     {% endif %}
     {% endblock %}
     </p>
@@ -66,69 +61,44 @@
     {% endif %}
 {% endif %}
 
-{% for project_post in project_posts %}
-{% block project_list_post_title %}
-{% editable project_post.title %}
-<h2>
-    <a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a>
-</h2>
-{% endeditable %}
-{% endblock %}
-{% block project_list_post_metainfo %}
-{% editable project_post.publish_date %}
-<h6 class="post-meta">
-    {% with project_post.categories.all as categories %}
-    {% if categories %}
-    {% trans "in" %}
-    {% for category in categories %}
-    <a href="{% url "blog_post_list_category" category.slug %}">{{ category }}</a>{% if not forloop.last %}, {% endif %}
-    {% endfor %}
-    {% endif %}
-    {% endwith %}
-    {% blocktrans with sometime=project_post.publish_date|timesince %}{{ sometime }} ago{% endblocktrans %}
-</h6>
-{% endeditable %}
-{% endblock %}
+{% include "project/includes/filter_panel.html" %}
 
-{% if project_post.featured_image %}
-{% block project_list_post_featured_image %}
-<a href="{{ project_post.get_absolute_url }}">
-    <img class="img-thumbnail pull-left" src="{{ MEDIA_URL }}{% thumbnail project_post.featured_image 90 90 %}">
+<div class="carousel horizontal-carousel">
+    <a class="carousel-prev horizontal-carousel__controls horizontal-carousel__controls--prev" href="#theCarousel" data-slide="prev"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="88" viewBox="0 0 25 88">
+  <image width="25" height="88" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAABYCAMAAAA3M6yYAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABMlBMVEUAAADMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMwAAABvXhxTAAAAZXRSTlMALMS0gUHoDAHMZ1vXBAfgTnPCEe41jagg8yKljzTvE791TOEI1F1kzgIL50N+thfyLZedKBuxhD3qDclsVtoG3VJwEOs6iawe8SWjkzAVvHpI5AnSYGJHe7vwL5SiHa2IO8VuFALFagkAAAABYktHRACIBR1IAAAACXBIWXMAAAsSAAALEgHS3X78AAABN0lEQVRIx5WW51ICQRCEj6CAioCiYiKjooJnVowkFVQkqZjj+z8DPMB+XcX9/aq39nZmuseyzJ/DCcByuQGMjHrMwOsbA8n4hN8MJgNBkISmAEyHZ4DMzgGIzC8AWVwCsByNAYknACRTaTPwZ1ZAsrqWNYP1jU2Q5PIAtuxtIDu7APbsfSAHhwCOjgtm4D05BcnZORT/4rIIkhJ1ZblSBXJ1DeCmVgdyewfgPtoA8tAE0Gp3zCDbfQTJUxeK32k/g6T3AqDx+gbk/QNA3f4E8vUN4KdSBvL7Zw1N+DS+gbg1/6l4HX5RUQWunKg2d4joqkEn/hPC7hUdz1MiJounUUwwT71wCnYX4UjCxdj5hFuywwpXZicX7s+JIVJGJBOnmUhATk2RtJzOItF5CxCbA28bYkMZbDV9/rYs22DOfmEAAAAASUVORK5CYII="/>
+</svg>
+
+</a><a class="carousel-next horizontal-carousel__controls horizontal-carousel__controls--next" href="#theCarousel" data-slide="next"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="88" viewBox="0 0 25 88">
+  <image width="25" height="88" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAABYCAMAAAA3M6yYAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABMlBMVEUAAADMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMwAAABvXhxTAAAAZXRSTlMALMS0gUHoDAHMZ1vXBAfgTnPCEe41jagg8yKljzTvE791TOEI1F1kzgIL50N+thfyLZedKBuxhD3qDclsVtoG3VJwEOs6iawe8SWjkzAVvHpI5AnSYGJHe7vwL5SiHa2IO8VuFALFagkAAAABYktHRACIBR1IAAAACXBIWXMAAAsSAAALEgHS3X78AAABN0lEQVRIx5WW51ICQRCEj6CAioCiYiKjooJnVowkFVQkqZjj+z8DPMB+XcX9/aq39nZmuseyzJ/DCcByuQGMjHrMwOsbA8n4hN8MJgNBkISmAEyHZ4DMzgGIzC8AWVwCsByNAYknACRTaTPwZ1ZAsrqWNYP1jU2Q5PIAtuxtIDu7APbsfSAHhwCOjgtm4D05BcnZORT/4rIIkhJ1ZblSBXJ1DeCmVgdyewfgPtoA8tAE0Gp3zCDbfQTJUxeK32k/g6T3AqDx+gbk/QNA3f4E8vUN4KdSBvL7Zw1N+DS+gbg1/6l4HX5RUQWunKg2d4joqkEn/hPC7hUdz1MiJounUUwwT71wCnYX4UjCxdj5hFuywwpXZicX7s+JIVJGJBOnmUhATk2RtJzOItF5CxCbA28bYkMZbDV9/rYs22DOfmEAAAAASUVORK5CYII="/>
+</svg>
 </a>
-{% endblock %}
-{% endif %}
 
-{% block project_list_post_content %}
-{% editable project_post.content %}
-{{ project_post.description_from_content|safe }}
-{% endeditable %}
-{% endblock %}
-
-{% block project_list_post_links %}
-<div class="blog-list-detail">
-    {% keywords_for project_post as tags %}
-    {% if 0 and tags %}
-    <ul class="list-inline tags">
-    {% trans "Tags" %}:
-    {% spaceless %}
-    {% for tag in tags %}
-    <li><a href="{% url "project_list_tag" tag.slug %}" class="tag">{{ tag }}</a>{% if not forloop.last %}, {% endif %}</li>
+<div class="horizontal-carousel__items-wrapper carousel slide" id="theCarousel">
+    <div class="carousel-wrapper">
+{% for project_post in project_posts %}
+    <a class="horizontal-carousel__item" href="{{ project_post.get_absolute_url }}">
+        {% if project_post.featured_image %}
+            <span class="horizontal-carousel__preview">
+                <img src="/res/270{{ MEDIA_URL }}{{ project_post.featured_image}}">
+            </span>
+        {% endif %}
+            <span class="horizontal-carousel__date">{{ project_post.date }}</span>
+        
+        <span class="horizontal-carousel__caption"><span class="horizontal-carousel__text-wrapper">
+            {{ project_post.title }}
+        </span></span>
+        
+        <span class="horizontal-carousel__description">
+        {{ project_post.description_from_content|safe }}
+        </span>
+    </a>
     {% endfor %}
-    {% endspaceless %}
-    </ul>
-    {% endif %}
-    <p>
-    <a href="{{ project_post.get_absolute_url }}">{% trans "read more" %}</a>
-    
-    </p>
+    </div>
 </div>
-{% endblock %}
-{% endfor %}
+</div>
+
 
 {% pagination_for project_posts %}
 
 {% endblock %}
 
-{% block right_panel %}
-{% include "blog/includes/filter_panel.html" %}
-{% endblock %}

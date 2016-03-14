@@ -1,25 +1,20 @@
-'use strict';
+$('#theCarousel').carousel({
+  interval: false
+})
 
-$(function () {
-  $('.carousel').jcarousel({
-    list: '.carousel-wrapper',
-    vertical: $('.carousel').hasClass('is-vertical')
-  });
-
-  $('.carousel-prev').on('jcarouselcontrol:active', function () {
-    $(this).removeClass('inactive');
-  }).on('jcarouselcontrol:inactive', function () {
-    $(this).addClass('inactive');
-  }).jcarouselControl({
-    target: '-=1'
-  });
-
-  $('.carousel-next').on('jcarouselcontrol:active', function () {
-    $(this).removeClass('inactive');
-  }).on('jcarouselcontrol:inactive', function () {
-    $(this).addClass('inactive');
-  }).jcarouselControl({
-    target: '+=1'
-  });
+$('.carousel .item').each(function(){
+  var next = $(this).next();
+  if (!next.length) {
+    next = $(this).siblings(':first');
+  }
+  next.children(':first-child').clone().appendTo($(this));
+  
+  for (var i=0;i<2;i++) {
+    next=next.next();
+    if (!next.length) {
+      next = $(this).siblings(':first');
+    }
+    
+    next.children(':first-child').clone().appendTo($(this));
+  }
 });
-//# sourceMappingURL=app.js.map

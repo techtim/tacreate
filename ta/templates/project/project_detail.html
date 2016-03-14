@@ -20,11 +20,17 @@
 {% endblock %}
 
 {% block main %}
-{% with project_post.team.all as team %}
-{% for person in team%}
-	{{person.title}}
-	<img class="member-foto" style="-webkit-clip-path: circle(50% at 50% 50%);clip-path: circle(50% at 50% 50%);" src="/res/80{{ MEDIA_URL }}{{person.mugshot}}">
-{% endfor %}
-{% endwith %}
+
+<div class="content-block__left-side">
+	<div class="content-block__text-block">
+		<p class="contacts">Дата:&nbsp;<span> {{ project_post.date }}</span></p>
+		<p class="contacts">Заказчик:&nbsp;<span> {{ project_post.customer }}</span></p>
+	</div>
+<div class="content-block__text-block">
 {% editable project_post.content %}{{ project_post.content|richtext_filters|safe }}{% endeditable %}
+</div>
+</div>
+{% with project_post.team as team %}
+{% include "includes/team_list.html" %}
+{% endwith %}
 {% endblock %}

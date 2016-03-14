@@ -4,12 +4,13 @@ from django.shortcuts import render, get_object_or_404
 from django.template.response import TemplateResponse
 from django.utils.translation import ugettext_lazy as _
 
+from mezzanine.pages.models import Page
 from mezzanine.utils.views import paginate
 from mezzanine.conf import settings
 
 
 from .models import Project, ProjectCategory
-
+from mezzanine_people.models import Person
 
 def project_list(request, tag=None, year=None, month=None, 
                    category=None, template="project/project_list.html",
@@ -24,7 +25,7 @@ def project_list(request, tag=None, year=None, month=None,
     project_posts = Project.objects.published(for_user=request.user)
     if tag is not None:
         tag = get_object_or_404(Keyword, slug=tag)
-        project_posts = blog_posts.filter(keywords__keyword=tag)
+        project_posts = project_posts.filter(keywords__keyword=tag)
     if year is not None:
         project_posts = project_posts.filter(publish_date__year=year)
         if month is not None:
@@ -72,5 +73,31 @@ def project_detail(request, slug, year=None, month=None, day=None,
     context.update(extra_context or {})
     templates = [u"project/project_detail_%s.html" % str(slug), template]
     return TemplateResponse(request, templates, context)
+
+
+def team_list(request, template="pages/team.html", extra_context=None):
+    pages = Page.objects.published(for_user=request.user).select_related()
+    page = get_object_or_404(pages, slug="team")
+    templates = [ template ]
+
+    team = Person.objects.published()
+    context = {"page": page, "team": team}
+    return TemplateResponse(request, templates, context)    
+
+def member_detail(request, slug,
+                  template="pages/member_detail.html"):
+    """
+    Custom templates are checked for using the name
+    ``mezzanine_people/person_detail_XXX.html`` where ``XXX`` is the
+    person's slug.
+    """
+    people = Person.objects.published()
+    person = get_object_or_404(people, slug=slug)
+    print vars(person)
+    project_posts = Project.objects.published(for_user=request.user)
+    project_posts = project_posts.filter(team=person)
+    context = {"person": person, "editable_obj": person, "parent_page": "team", "projects": project_posts}
+    templates = [ template ]
+    return render(request, templates, context)
 
 # Create your views here.

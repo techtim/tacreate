@@ -1,0 +1,46 @@
+{% extends "pages/page.html" %}
+
+{% load mezzanine_tags keyword_tags i18n %}
+
+{% block meta_title %}{% if person %}{{ person.full_name }}{% else %}{% trans "Person" %}{% endif %}{% endblock %}
+
+{% block meta_keywords %}{% metablock %}
+{% keywords_for person as keywords %}
+{% for keyword in keywords %}{% if not forloop.first %}, {% endif %}{{ keyword }}{% endfor %}
+{% endmetablock %}{% endblock %}
+
+{% block meta_description %}{% metablock %}
+{{ person.description }}
+{% endmetablock %}{% endblock %}
+
+{% block title %}
+{% editable person.title %}{{ person.title }}{% endeditable %}
+{% endblock %}
+
+{% block main %}{{ block.super }}
+<div class="content-block__left-side content-block__left-side--collapsed">
+	<div class="content-block__text-block">
+		{% for link in person.personlink_set.all %}
+	    <p class="contacts"><a href="{{ link.url }}">{{ link.name }}</a></p>
+	    {% endfor %}
+	</div>
+	<div class="content-block__text-block">
+		{% editable person.bio %}
+		{{ person.bio|richtext_filters|safe }}
+		{% endeditable %}
+	</div>
+</div>
+<div class="content-block__right-side content-block__right-side--wide">
+	<img src="{{ MEDIA_URL }}{{ person.mugshot }}" alt="" class="content-block__image-with-description">
+	<div class="content-block__image-description">Воображение имеет резкий этикет, таким образом, сходные законы контрастирующего развития характерны и для процессов в психике. Гений иллюстрирует катарсис.</div>
+	<div class="horizontal-list"><div class="horizontal-list__caption">Проекты:</div>
+	<div class="horizontal-list__items-list">
+		{% for project in projects %}
+		<a href="{{ project_post.get_absolute_url }}" class="horizontal-list__list-link">{{project.title}}</a>
+		{% endfor %}
+	</div>
+	</div>
+</div>
+
+{% endblock %}
+

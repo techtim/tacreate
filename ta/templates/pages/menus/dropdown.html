@@ -4,13 +4,6 @@
 
 
 {% if branch_level == 0 and not on_home %}
-<?xml version="1.0" encoding="utf-8"?>
-<svg class="logo" version="1.1" id="Layer_6" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-     viewBox="0 0 1246.8 2" style="enable-background:new 0 0 1246.8 2;" xml:space="preserve">
-<polyline style="fill:none;stroke:#CCCCCC;stroke-linecap:square;stroke-miterlimit:10;" points="1244,0 -31,0 -31,1 1244,1
-    "/>
-</svg>
-
 <!-- <div class="horizontal-line"></div> -->
 
 <div class="navigation" role="navigation">
@@ -20,7 +13,6 @@
         <a href="{% url "home" %}" class="navigation__site-link {% if on_home %} navigation__site-link--is-current {% endif %}">{% trans "В начало" %}</a>
     {% endif %}
     {% if page.in_menu %}
-    
         <a href="{{ page.get_absolute_url }}" class="navigation__site-link {% if page.is_current_or_ascendant %}navigation__site-link--is-current{% endif %}">
             {{ page.title }}
         </a>

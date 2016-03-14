@@ -1,0 +1,25 @@
+{% with team.all as team %}
+<div class="content-block__right-side">
+	<div class="carousel is-vertical vertical-list vertical-list--carousel">
+		{% if team.count > 4 %}
+		<div class="carousel-prev vertical-list__controls vertical-list__controls--prev">
+			<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="88" viewBox="0 0 25 88">
+			  <image width="25" height="88" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAABYCAMAAAA3M6yYAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABMlBMVEUAAADMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMwAAABvXhxTAAAAZXRSTlMALMS0gUHoDAHMZ1vXBAfgTnPCEe41jagg8yKljzTvE791TOEI1F1kzgIL50N+thfyLZedKBuxhD3qDclsVtoG3VJwEOs6iawe8SWjkzAVvHpI5AnSYGJHe7vwL5SiHa2IO8VuFALFagkAAAABYktHRACIBR1IAAAACXBIWXMAAAsSAAALEgHS3X78AAABN0lEQVRIx5WW51ICQRCEj6CAioCiYiKjooJnVowkFVQkqZjj+z8DPMB+XcX9/aq39nZmuseyzJ/DCcByuQGMjHrMwOsbA8n4hN8MJgNBkISmAEyHZ4DMzgGIzC8AWVwCsByNAYknACRTaTPwZ1ZAsrqWNYP1jU2Q5PIAtuxtIDu7APbsfSAHhwCOjgtm4D05BcnZORT/4rIIkhJ1ZblSBXJ1DeCmVgdyewfgPtoA8tAE0Gp3zCDbfQTJUxeK32k/g6T3AqDx+gbk/QNA3f4E8vUN4KdSBvL7Zw1N+DS+gbg1/6l4HX5RUQWunKg2d4joqkEn/hPC7hUdz1MiJounUUwwT71wCnYX4UjCxdj5hFuywwpXZicX7s+JIVJGJBOnmUhATk2RtJzOItF5CxCbA28bYkMZbDV9/rYs22DOfmEAAAAASUVORK5CYII="/>
+			</svg>
+		</div>
+		<div class="carousel-next vertical-list__controls vertical-list__controls--next">
+			<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="88" viewBox="0 0 25 88">
+			  <image width="25" height="88" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAABYCAMAAAA3M6yYAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABMlBMVEUAAADMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMwAAABvXhxTAAAAZXRSTlMALMS0gUHoDAHMZ1vXBAfgTnPCEe41jagg8yKljzTvE791TOEI1F1kzgIL50N+thfyLZedKBuxhD3qDclsVtoG3VJwEOs6iawe8SWjkzAVvHpI5AnSYGJHe7vwL5SiHa2IO8VuFALFagkAAAABYktHRACIBR1IAAAACXBIWXMAAAsSAAALEgHS3X78AAABN0lEQVRIx5WW51ICQRCEj6CAioCiYiKjooJnVowkFVQkqZjj+z8DPMB+XcX9/aq39nZmuseyzJ/DCcByuQGMjHrMwOsbA8n4hN8MJgNBkISmAEyHZ4DMzgGIzC8AWVwCsByNAYknACRTaTPwZ1ZAsrqWNYP1jU2Q5PIAtuxtIDu7APbsfSAHhwCOjgtm4D05BcnZORT/4rIIkhJ1ZblSBXJ1DeCmVgdyewfgPtoA8tAE0Gp3zCDbfQTJUxeK32k/g6T3AqDx+gbk/QNA3f4E8vUN4KdSBvL7Zw1N+DS+gbg1/6l4HX5RUQWunKg2d4joqkEn/hPC7hUdz1MiJounUUwwT71wCnYX4UjCxdj5hFuywwpXZicX7s+JIVJGJBOnmUhATk2RtJzOItF5CxCbA28bYkMZbDV9/rYs22DOfmEAAAAASUVORK5CYII="/>
+			</svg>
+		</div>
+	{% endif %}
+	<div class="vertical-list__items-wrapper">
+    <div class="carousel-wrapper">
+		{% for person in team%}
+			<!-- a href="{% url "member_detail" person.slug %}" -->
+			<a href="{% url "member_detail" person.slug %}" class="vertical-list__item"><img src="/res/80{{ MEDIA_URL }}{{person.mugshot}}" alt="" class="vertical-list__image">
+			<div class="vertical-list__text-wrapper"><div class="vertical-list__caption">{{person.title}}</div><div class="vertical-list__description">{{person.job_title}}</div></div>
+			</a>
+		{% endfor %}
+</div></div></div></div>
+{% endwith %}

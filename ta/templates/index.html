@@ -1,24 +1,30 @@
-{% extends "base.html" %}
-{% load i18n %}
+<!doctype html>
+<html lang="{{ LANGUAGE_CODE }}"{% if LANGUAGE_BIDI %} dir="rtl"{% endif %}>
+{% load pages_tags mezzanine_tags i18n staticfiles %}
 
-{% block meta_title %}{% trans "Home" %}{% endblock %}
-{% block title %}{% trans "Home" %}{% endblock %}
-
-
-{% block main %}
-{% blocktrans %}
-
-<link rel="stylesheet" type="text/css" media="all" href="static/imenu/css.css">
-<script type="text/javascript" src="static/imenu/core.js"></script><script type="text/javascript" src="static/imenu/deviceProxy.js"></script><script type="text/javascript" src="static/imenu/module.js"></script><script type="text/javascript" src="static/imenu/three.js"></script><script type="text/javascript" src="static/imenu/Detector.js"></script><script type="text/javascript" src="static/imenu/stats.js"></script></head>
-
-	<!-- Canvas version and logic -->
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="red">
+    <meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
+    <meta name="description" content="{% block meta_description %}{% endblock %}">
+    <title>{% block meta_title %}{% endblock %}{% if settings.SITE_TITLE %} | {{ settings.SITE_TITLE }}{% endif %}</title>
+    <link rel="shortcut icon" href="{% static "img/favicon.ico" %}">
+    <link rel="stylesheet" href="/css/styles.css?1452678231801">
+    <link rel="stylesheet" type="text/css" media="all" href="static/imenu/css.css">
+	<script type="text/javascript" src="static/imenu/core.js"></script><script type="text/javascript" src="static/imenu/deviceProxy.js"></script><script type="text/javascript" src="static/imenu/module.js"></script><script type="text/javascript" src="static/imenu/three.js"></script><script type="text/javascript" src="static/imenu/Detector.js"></script><script type="text/javascript" src="static/imenu/stats.js"></script>
+</head>
 	
 	<!-- Webgl -->
-
-	<body style="cursor: move;" onload="init()">
+<body style="cursor: move;" onload="init()">
+	<a href="/" class="logo"><?xml version="1.0" encoding="utf-8"?>
+	<svg version="1.1" id="Layer_6" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+     viewBox="0 0 1246.8 38.9" style="enable-background:new 0 0 1246.8 38.9;" xml:space="preserve">
+		<polyline style="fill:none;stroke:#CCCCCC;stroke-miterlimit:10;" points="1218.4,38.3 1235.6,0.4 1226,0.4 1243.3,38.3 "/>
+	</svg>
+	</a>
 	<div id="values"></div>
 		<div id="container"><canvas style="width: 1645px; height: 556px;" height="556" width="1645"></canvas></div>
 		<script src="static/imenu/app.js"></script>
-
-{% endblocktrans %}
-{% endblock %}
+</body>
